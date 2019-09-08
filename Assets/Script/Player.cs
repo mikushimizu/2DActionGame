@@ -7,6 +7,8 @@ using UnityEngine;
 //セットアップのエラーを回避する
 
 public class Player : MonoBehaviour {
+    public GameObject ScorchedArea;
+
     public float jumpHeight = 4;
     public float timeToJumpApex = .4f; //頂点までの時間
     float accelerationTimeAirborne = .2f;
@@ -31,6 +33,10 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (Input.GetKey(KeyCode.F)){
+            Instantiate(ScorchedArea, this.transform.position, transform.rotation);
+        }
+        
         if (controller.collisions.above || controller.collisions.below) //上方か下方がtrue
         {
             velocity.y = 0;
